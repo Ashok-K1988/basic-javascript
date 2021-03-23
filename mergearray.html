@@ -1,0 +1,25 @@
+<html>
+    <p id="demo"></p>
+    <body>
+        <script>
+    var array1 = [1, 2, 3, 5, 4, 1];  
+    var array2 = [4, 5, 2, 3,6];
+   function merge_array(array1, array2) {
+    var result_array = [];
+    var arr = array1.concat(array2);
+    var len = arr.length;
+    var assoc = {};
+    while(len--) {
+        var item = arr[len];
+        if(!assoc[item]) 
+        { 
+            result_array.unshift(item);
+            assoc[item] = true;
+        }
+    }
+    return result_array;
+}
+ document.getElementById("demo").innerHTML= merge_array(array1,array2);
+        </script>
+    </body>
+</html>

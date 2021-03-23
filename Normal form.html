@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+		         background-repeat: no-repeat;
+		         background-attachment: fixed; 
+		         background-size: 100% 120%;
+		      }
+		      a{
+		                cursor: pointer;
+		                color: rgb(55, 0, 255);
+		                text-decoration: underline;
+		                margin-right: 4px;
+		            }
+	</style>
+</head>
+<body onload="myfunction()">
+	<h1 style="color:rgb(98, 71, 250);text-align:center; text-decoration: underline;"> The Form submission </h1>
+	<form autocomplete="off" id="myform">
+		<table align="center" cellpadding="15">
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Name<td>:
+						<input type="t ext" id="name"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Age<td>:
+						<input type="number" value="" id="age"></td>
+					</label>
+				</th>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">EmailID<td>:
+						<input type="text" value="" id="email"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Address<td>:
+						<input type="text" value="" id="address"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">City<td>:
+						<input type="text" value="" id="city"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(2, 3, 3);">Pincode<td>:
+						<input type="number" value="" id="pincode"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">State<td>:
+						<input type="text" value="" id="state"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<label style="color: rgb(4, 6, 7);">
+					<th style="color: rgb(0, 0, 0);">CoursesApplied For  <td>:                        
+							<select name="Course" id="courseapplied" style="width: 75%;">
+								<option value="-1" selected style="color: rgb(192, 0, 144); ">select..</option>
+								<option value="ME">ME</option>
+								<option value="MCA">MCA</option>
+								<option value="MBA">MBA</option>
+								<option value="Ph.D">Ph.D</option>
+							</select></td> 
+				</label>
+				</th>
+			</tr>
+		</table>
+	</form>
+	<center>
+		<div id="showDetails"></div>
+		<button onclick=" submit()" value="submit" type="submit" id="savebtn" style="color: rgb(233, 14, 253);"><b>Submit</b>
+		</button>
+		<button onclick=" onUpdate()" value="submit" type="submit" id="updatebtn" style="color: rgb(8, 42, 236);"><b>Update</b>
+		</button>
+		<button onclick="reset()" type="reset" value="reset" id="resetbtn" style="color: rgb(145, 123, 0);"><b>Reset</b>
+		</button>
+	</center>
+	<div><br><br>
+    <table id="sampleTable" border="1" cellpadding = "10" style="background: rgb(255, 253, 253); width: 100% 100%;">
+    </center></br></br></div>
+    <tr>
+        <td style="color: rgb(247, 14, 14);width: 10%;">Name</td>
+        <td style="color: rgb(230, 18, 18);width: 10%;">Age</td>
+        <td style="color: rgb(248, 11, 11);width: 10%;">EmailID</td>
+        <td style="color: rgb(218, 9, 9);width: 10%;">Address</td>
+        <td style="color: rgb(231, 16, 16);width: 10%;">City</td>
+        <td style="color: rgb(230, 25, 25);width: 10%;">Pincode</td>
+        <td style="color: rgb(226, 9, 9);width: 10%;">State</td>
+        <td style="color: rgb(218, 19, 19);width: 10%;">CourseAppliedFor</td>
+    </tr>
+</table>
+    <script>
+        var student3 = []
+        // console.log(student3)
+        var updateIndex =null
+		var selectedrow = null;
+        var studentdetails={}
+		    function myfunction(){
+                // document.getElementById("sampleTable").style.display = "none" 
+                document.getElementById("updatebtn").style.display = "none" ;
+                let arr = localStorage.getItem('value')
+                student3 = JSON.parse(arr)
+            }
+		    function getDetails() {
+                studentdetails.Name=document.getElementById("name").value,
+                studentdetails.Age=document.getElementById("age").value,
+                studentdetails.EmailID=document.getElementById("email").value,
+                studentdetails.Address=document.getElementById("address").value,
+                studentdetails.City=document.getElementById("city").value,
+                studentdetails.Pincode=document.getElementById("pincode").value,    
+                studentdetails.State=document.getElementById("state").value,
+                studentdetails.CourseAppliedFor=document.getElementById("courseapplied").value
+            }
+        function  submit(){
+            getDetails();
+            document.getElementById("updatebtn").style.display = "none" 
+		    //   document.getElementById("sampleTable").style.display = "block" 
+		      var table = document.getElementById('sampleTable')
+		      var row = table.getElementsByTagName("tr")
+		      var StudentDetails = document.getElementById('sampleTable').insertRow(row.length);
+		      StudentDetails.insertCell(0).innerHTML = studentdetails.Name
+		      StudentDetails.insertCell(1).innerHTML=studentdetails.Age
+		      StudentDetails.insertCell(2).innerHTML=studentdetails.EmailID
+		      StudentDetails.insertCell(3).innerHTML=studentdetails.Address
+		      StudentDetails.insertCell(4).innerHTML=studentdetails.City
+		      StudentDetails.insertCell(5).innerHTML=studentdetails.Pincode
+		      StudentDetails.insertCell(6).innerHTML=studentdetails.State
+		      StudentDetails.insertCell(7).innerHTML=studentdetails.CourseAppliedFor
+		      StudentDetails.insertCell(8).innerHTML= '<a onclick = "onEdit(this)" >Edit</a><a onclick = "onDelete(this)">Delete</a>'
+              reset();
+              console.log(studentdetails);
+              student3.push(studentdetails)
+			  localStorage.setItem("value",JSON.stringify(student3))
+              let arr = localStorage.getItem('value')
+              let dummyArr = JSON.parse(arr)
+              student3 = Object.values(dummyArr)
+        }
+        function onEdit(td) {
+		      document.getElementById("updatebtn").style.display = "block" 
+		      document.getElementById("savebtn").style.display = "none" 
+		      selectedrow = td.parentElement.parentElement;
+		      updateIndex = selectedrow.rowIndex
+		      document.getElementById("name").value = selectedrow.cells[0].innerHTML;
+		      document.getElementById("age").value = selectedrow.cells[1].innerHTML;
+		      document.getElementById("email").value = selectedrow.cells[2].innerHTML;
+		      document.getElementById("address").value = selectedrow.cells[3].innerHTML;
+		      document.getElementById("city").value = selectedrow.cells[4].innerHTML;
+		      document.getElementById("pincode").value = selectedrow.cells[5].innerHTML;
+		      document.getElementById("state").value = selectedrow.cells[6].innerHTML;
+		      document.getElementById("courseapplied").value = selectedrow.cells[7].innerHTML;
+        }
+        function onUpdate(){
+		        document.getElementById("updatebtn").style.display = "none" 
+		        document.getElementById("savebtn").style.display = "block" 
+		        selectedrow.cells[0].innerHTML = document.getElementById('name').value
+		        selectedrow.cells[1].innerHTML = document.getElementById('age').value
+		        selectedrow.cells[2].innerHTML = document.getElementById('email').value
+		        selectedrow.cells[3].innerHTML = document.getElementById('address').value
+		        selectedrow.cells[4].innerHTML = document.getElementById('city').value
+		        selectedrow.cells[5].innerHTML = document.getElementById('pincode').value
+		        selectedrow.cells[6].innerHTML = document.getElementById('state').value
+		        selectedrow.cells[7].innerHTML = document.getElementById('courseapplied').value
+                reset();
+        }
+        function onDelete(td) {
+		       if(confirm('Are you sure delete this record?')){
+		       let row = td.parentElement.parentElement;
+		
+		       document.getElementById("sampleTable").deleteRow(row.rowIndex);
+		     } }
+		    function reset() {
+		      student = []
+		      document.getElementById('myform').reset();
+            }
+	</script>
+</body>
+
+</html>

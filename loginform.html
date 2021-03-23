@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: rgb(197, 197, 197);
+            }
+            *{
+                margin: 10px;
+            }
+            .text{
+                font-size: 30px;
+            }
+            #createbtn{
+                float: left;
+            }
+            #reset{
+                float: right;
+            }
+            #cancel,input[type=button] {
+            color: rgb(230, 48, 48);
+            background-color: rgb(255, 248, 253);
+            padding: 6px 25px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer
+            }
+            input[type=text],[type=password]{
+                display:inline-block;
+                padding: 8px 20px;
+                text-align: left;
+                vertical-align: top;
+                text-align: left; 
+                width: 25%; 
+                font-size: 19px;
+                margin-bottom:5px;
+            }
+            #create1{
+                display:inline-block;
+            }
+            label{
+                display:inline-block;
+            }
+            .box{
+                font-size: 29px;
+                display:inline-block;
+                align-items:right;
+                width:15%
+                }
+        </style>
+    </head>
+    <body>
+        <form  id="form" autocomplete="off"> 
+        <div id="form">
+        <p id="demo"></p>
+      
+        <div class="imgcontainer" align = "center"><br><br><br><br>
+            <input type="button" value="Create" id="createbtn" onclick="create()">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" style="width: 15%; "><br>
+        </div>
+        <div id="form" align="center" style="padding:100px;">  
+            <div id="back">
+                <form> 
+                    <div id="first">
+                    <label class="text">User Name:</label> 
+                    <input type="text" id="login" required><br>
+                    <label class="text">Password :</label> 
+                    <input type="password" id="password" required><br><br><br>
+                    <input type="button" value="Login" id="submit" onclick="login1()">
+                    <input type="button" value="Reset" id="cancel1" onclick="reset()"><br>
+                </div>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <table class="box">
+                    <div id="create">
+                    <label class="box">Name</label>
+                    <input type="text" id="firstname" required><br>
+                    <label class="box">User Name</label>   
+                    <input type="text" id="lastname" required><br>
+                    <label class="box">New Password</label>   
+                    <input type="text" id="newpassword" required><br>
+                    <label class="box">Conform Password</label>   
+                    <input type="text" id="conformpassword" required><br><br><br><br>
+                    <input type="button" id="save" value="Save" onclick="getdata()">
+                    <input type="reset" value="Reset" id="cancel" onclick="reset()">
+                    <input type="button" id="reset" value="Back" onclick="back()">
+                </div>
+            </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    </form>
+    </body>
+    <script>
+        document.getElementById("create").style.display = "none"
+        function submit() {
+            var data = {}
+            data = {
+                username: document.getElementById("login").value,
+                password: document.getElementById("password").value
+            }
+            return data;
+        }
+        function getdata() {
+            document.getElementById("create").style.display = "none"
+            document.getElementById("first").style.display = "block"
+            document.getElementById("createbtn").style.display = "block"
+            var obj = {}
+                obj = {
+                   Name: document.getElementById("firstname").value,
+                   Username: document.getElementById("lastname").value,
+                   Newpassword: document.getElementById("newpassword").value,
+                   Conformpassword: document.getElementById("conformpassword").value
+                }
+           if(obj.Name && obj.Username && obj.Newpassword && obj.Conformpassword){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    }
+                }
+                xhttp.open("POST","https://traineesapi.firebaseio.com/vinoth.json", true);
+                xhttp.send(JSON.stringify(obj));
+                
+            }
+            else {
+                alert("Not save !!!!!!!!!!!!!!!!!")
+                return obj
+            }
+            reset()
+    }
+    function create() {
+            document.getElementById("create").style.display = "block"
+            document.getElementById("createbtn").style.display = "none"
+            document.getElementById("first").style.display="none"
+    }
+    function login1(){
+        var  val = submit()
+        let user = false
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var users = JSON.parse(this.responseText)
+                for(let r in users){
+                    if(users[r].Username == val.username && users[r].Conformpassword == val.password){
+                        user = true
+                        window.open("http://127.0.0.1:5500/worked/CRUD/CRUDdata.html", "_self")
+                    }
+                }
+                if (!user) alert('incorrect username or password')
+            } 
+        }
+        xhttp.open("GET","https://traineesapi.firebaseio.com/vinoth.json", true);
+        xhttp.send();
+        reset()
+    }
+    function back() {
+        document.getElementById("first").style.display = "block"
+        document.getElementById("create").style.display = "none"
+        document.getElementById("createbtn").style.display = "block"
+    }
+    function reset() {
+        document.getElementById("form").reset()
+    }
+        
+    </script>
+</html> 

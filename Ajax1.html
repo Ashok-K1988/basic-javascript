@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style>
+            #sampleTable{
+                background-color: rgb(217, 248, 238);
+                border-collapse: collapse;
+            }
+            #click{
+                width: 20%;
+                padding: 12px 20px 12px;
+                size: 50%;
+                background-color: rgb(129, 127, 255);
+            }
+            #searchInput{
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                background-color: rgb(215, 228, 194);
+                width: 20%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <center> <h2> The page are loaded </h2>
+            <input type="text" id="searchInput" onkeyup="searchById()" placeholder="Search for ID.." title="Type in a name">
+            <div>
+                <button onclick="loadXMLDoc()" id="click" value="submit">click me</button>
+            </div>
+        </center>
+        <p id="demo"></p>
+        <div>
+            <form>
+                <table id="sampleTable" border="1" align="center">
+                    <thead style="background-color: rgb(184, 168, 253);">
+                        <tr> 
+                           <th>UserId</th><th>Id</th><th>Title</th><th>Body</th><th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbdata"></tbody>
+                </table>
+            </form>
+        </div>
+        <script>
+            var xmlDoc = []
+            var showArr = []
+
+            function loadXMLDoc() {
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+
+            myFunction(this);
+
+            }
+
+            };
+
+            xmlhttp.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+            
+            xmlhttp.send();
+
+            }
+
+
+            function searchById() {
+                var id = document.getElementById('searchInput').value;
+                showArr = []
+                console.log(xmlDoc);
+                xmlDoc.forEach(val => { 
+                    if (val.id === Number(id)) {
+                    showArr.push(val)
+                    }
+                })
+                showTable(showArr)
+            }
+            function myFunction(xml){
+                var i;
+                showArr = JSON.parse(xml.responseText);
+                xmlDoc = JSON.parse(xml.responseText);
+                showTable(showArr)
+                }
+               function showTable (showArr) {
+                var table = '<tbody>'
+                for (i = 0; i <showArr.length; i++) { 
+                 table += '<tr>';
+                 table+= '<td>' + showArr[i].userId + '</td>';
+                 table+= '<td>' +showArr[i].id + '</td>';
+                 table+= '<td>' +showArr[i].title + '</td>';
+                 table+= '<td>' +showArr[i].body+ '</td>';
+                 table+= '<td>' +'<input type = "button" value ="Edit" id ="edit" onclick="onEdit()"/>'+'<input type = "button" value ="Delete" id ="delete" onclick="onDelete()"/>'+'</td>';
+                 table+= '</tr>';
+                  }
+                  table+='</tbody>';  
+                  document.getElementById("tbdata").innerHTML = table;
+               }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,313 @@
+<html>
+  <head>
+		<title>Student Results</title>  
+		<style>
+			#send
+			tr:nth-child(even) {
+			   background-color: #dddddd;
+			}
+			body
+			{
+			   background-color: rgb(218, 234, 248);
+			}
+			a {
+            cursor: pointer;
+            color: rgb(25, 0, 255);
+            text-decoration: underline;
+            margin-right: 4px;
+			}
+			#sampleTable{
+			border-collapse: collapse;
+			border-color: rgb(122, 46, 145);
+			}
+		</style>
+	</head>
+	<body onload="getAllData()"> 
+		<p id="demo"></p>
+		<div style="float: left;">     
+			<fieldset style="width:820px" >
+				<form id="myform" name="Myform" onsubmit="return validateForm()" method="POST" autocomplete="off" cellpadding="15" style="background-image: url(https://www.wallpaperflare.com/static/930/175/684/circles-highlights-background-form-wallpaper.jpg); width: 100%; height: 120%;" > 
+					<h1 style="color:rgb(250, 71, 220);text-align:center; text-decoration: underline;"><b>Student Details:</b></h1>
+               <center>
+                  <div class="imgcontainer">
+                     <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" style="width: 30%;">
+                  </div><br/><br/> 
+                  <div> Name:<input type="text" id="name" value="" oninput="wwe()"> <br></br>  
+                           Class:<input type="text" id="class" value="" oninput="wwe()"> <br></br>
+                           EmailID:<input type="email" value="" id="email"><br></br>
+                     <table border="" align="center" cellpadding="10">
+                        <tr><td>Tamil</td>
+                        <td><input type="text" id="tamil" name="number" value="" class="form1" oninput="wwe()"  maxlength="3"></td></tr>
+                        <tr><td>English</td>
+                        <td><input type="text" id="english" name="number" value="" class="form1" oninput="wwe()"maxlength="3"></td></tr>
+                        <tr><td>Maths</td>  
+                        <td><input type="text" class="form1" name="number" id="maths" value="" oninput="wwe()" maxlength="3"></td></tr>
+                        <tr><td>Science</td>
+                        <td><input type="text" id="science" name="number" class="form1" value="" oninput="wwe()"maxlength="3"></td></tr>   
+                        <tr><td>Social Science</td>
+                           <td><input type="text" id="socialscience" name="number" value="" class="form1" oninput="wwe()"maxlength="3"></td></tr>             
+                     </table><br/><br/>
+                     <input type="button" id="savebtn" onclick="myDOC()" value="Get Result" style="color: rgb(0, 17, 255);">
+                     <input type="button"  type="reset" value="Reset" onclick="reset()"  style="color: rgb(67, 36, 240);">
+                     <input type="button"  id="updatebtn" onclick="update()" value="Update" style="color: rgb(67, 36, 240);">
+                  </div>
+               </center>
+               <h2 style="color:rgb(250, 71, 235);text-align:center; text-decoration: underline;">Report Card</h2>
+               <table border="1"align= "center" cellpadding="10">
+                  <tr><td>Name</td>
+                  <td><input type="text" id="StudentName" readonly></td></tr>
+                  <tr><td>Class</td>
+                  <td><input type="text" id="StudentClass" readonly></td></tr>
+                  <tr><td>EmailID</td>
+                  <td><input type="text" id="emailid" readonly></td></tr>
+                  <tr><td>Total Marks</td>
+                  <td><input type="text" id="TotalMarks" readonly></td></tr>
+                  <tr><td>Average Marks</td>
+                  <td><input type="text" id="AvgMarks" readonly></td></tr>
+                  <tr><td>Grade</td>
+                  <td><input type="text" id="Grade" readonly></td></tr>
+                  <tr><td>Remarks</td>
+                  <td><input type="text" id="Result" readonly></td></tr>
+               </table>
+				</form>
+			</fieldset>
+		</div>
+		<div>
+			<fieldset style="width:1000px;height: 1180px;" >
+				<form autocomplete="off" style="background-image: url();">
+					<div align="center"><br>
+						<table border="20" cellpadding="10">
+							<tr><td> Name:</td>
+							<td> <input type="text" id="name1" readonly></td></tr>
+							<tr><td> Class:</td>
+							<td> <input type="text" id="class1" readonly></td></tr>
+							<tr><td>Tamil</td>
+							<td><input type="text" id="tamil1"readonly></td></tr>
+							<tr><td>English</td>
+							<td><input type="text" id="english1"readonly></td></tr>
+							<tr><td>Maths</td>  
+							<td><input type="text" id="maths1"readonly></td></tr>
+							<tr><td>Science</td>
+							<td><input type="text" id="science1"readonly></td></tr>   
+							<tr><td>Social Science</td>
+							<td><input type="text" id="socialscience1"readonly></td></tr> 
+							<tr><td>Total</td>
+							<td><input type="text" id="totalmark1"readonly></td></tr>      
+							<tr><td>Average</td>
+							<td><input type="text" id="AvgMarks1"readonly></td></tr>    
+						</table><br/><br/>
+					</div>
+				</form><br/><br/>
+				<div id="send">
+					<form>
+						<table id="sampleTable" border ="3" align ="center">
+							<thead>
+								<tr> 
+									<td>Name</td>  <td>Class</td> <td>EmailID</td> <td>Tamil </td> <td>English</td> <td>Maths</td> <td>Science</td>   
+									<td>Socilascience</td> <td>Total</td>  <td>AverageMark</td> <td>Grade</td> <td>Remarks</td> <td>Action</td>
+								</tr>
+							</thead>
+							<tbody id="tbdata"></tbody>
+						</table>
+					</form>
+				</div>
+			</fieldset><br>
+		</div>
+	</body>
+	<script>
+     	 var value;
+      	var updateId;
+		var curvalue = null
+        var dummyArr = []
+        var obj = {}
+        var EmailID = '';
+        var updateIndex = null
+		function myDOC(){
+            document.getElementById("updatebtn").style.display = "none" 
+          	let data = formdata()
+          	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+          			getAllData ()
+				}
+          	};
+          	xhttp.open("POST", "https://traineesapi.firebaseio.com/ashok_student.json", true);
+          	xhttp.send(JSON.stringify(data));
+          	reset();
+      	}
+        function showTable (dummyArr) {
+			var k = '<tbody>'
+			for(i = 0;i < dummyArr.length; i++){
+				k+= '<tr>';
+				k+= '<td>' + dummyArr[i].name + '</td>';
+				k+= '<td>' + dummyArr[i].class + '</td>';
+				k+= '<td>' + dummyArr[i].emailID + '</td>';
+				k+= '<td>' + dummyArr[i].tamilmark + '</td>';
+				k+= '<td>' + dummyArr[i].engmark+ '</td>';
+				k+= '<td>' + dummyArr[i].mathsmark + '</td>';
+				k+= '<td>' + dummyArr[i].sciencemark + '</td>';
+				k+= '<td>' + dummyArr[i].socialsciencemark + '</td>';
+				k+= '<td>' + dummyArr[i].totalMarks + '</td>';
+				k+= '<td>' + dummyArr[i].averageMarks + '</td>';
+				k+= '<td>' + dummyArr[i].grade + '</td>';
+				k+= '<td>' + dummyArr[i].result + '</td>';
+				k+= '<td>' +`<input type="button" id="edit" value="Edit" onclick="onEdit('${dummyArr[i].id}')"/>`;
+				k+=  `<input type="button" id value="Delete" onclick = "onDelete('${dummyArr[i].id}')"/>` + '</td>';
+				k+= '</tr>';
+			}
+			k+='</tbody>';  
+			document.getElementById('tbdata').innerHTML = k;
+		}
+        function wwe() {
+			document.getElementById("name1").value = document.getElementById("name").value;
+			document.getElementById("class1").value = document.getElementById("class").value;
+			document.getElementById("tamil1").value = document.getElementById("tamil").value;
+			document.getElementById("english1").value = document.getElementById("english").value;
+			document.getElementById("maths1").value = document.getElementById("maths").value;
+			document.getElementById("science1").value = document.getElementById("science").value;
+			document.getElementById("socialscience1").value = document.getElementById("socialscience").value;
+			document.getElementById("totalmark1").value = document.getElementById("tamil").value - (-document.getElementById("english").value) -(-document.getElementById("maths").value)-(-document.getElementById("science").value)-(-document.getElementById("socialscience").value);
+			document.getElementById("AvgMarks1").value = document.getElementById("totalmark1").value / 5;
+		}
+        function ValidateEmail(email){
+			var x = document.forms["myform"]["email"].value;
+			var correct = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
+			if (correct.test(x)) {} 
+			else {
+				alert("Please Enter Valid Email Id");
+				return false
+			}
+		}
+        function  getAllData () {
+			document.getElementById("updatebtn").style.display = "none" 
+			dummyArr = []
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					let dummyObj = JSON.parse(this.responseText)
+					for (let i in dummyObj) {
+						dummyObj[i].id = i
+						dummyArr.push(dummyObj[i])
+					} 
+               		showTable (dummyArr)
+				}
+			};
+			xhttp.open("GET", "https://traineesapi.firebaseio.com/ashok_student.json", true);
+			xhttp.send();
+		}
+		function formdata () {
+			var TamilMarks = document.getElementById('tamil').value;
+			var EngMarks =document.getElementById('english').value;
+			var MathsMarks = document.getElementById('maths').value;
+			var ScienceMarks = document.getElementById('science').value;
+			var SocialscienceMarks = document.getElementById('socialscience').value;
+			if(TamilMarks && EngMarks && MathsMarks && ScienceMarks && SocialscienceMarks ){
+				var TotalMarks =TamilMarks-(- EngMarks )- (- MathsMarks) - (- ScienceMarks) - (- SocialscienceMarks);
+				var AverageMarks = TotalMarks / 5;  
+				if(TamilMarks >= 35 && EngMarks >= 35 && MathsMarks >= 35 && ScienceMarks >=35 && SocialscienceMarks >=35){ 		
+					result= "pass"
+				}
+				else{
+					result = "fail";
+				}
+				switch(
+						(AverageMarks > 80 && AverageMarks <= 100) ? 1 : 
+						(AverageMarks > 60 && AverageMarks <= 80) ? 2  :                                                                                                                                                                                 
+						(AverageMarks > 50 && AverageMarks <= 60) ? 3 : 
+						(AverageMarks > 35 && AverageMarks <= 50) ? 4 :
+						(AverageMarks > 0 && AverageMarks <= 35) ? 5 : 0 ){
+					case 1 :
+						grade = "A";
+					break;
+					case 2 :
+						grade = "B"; 
+					break;
+					case 3 :
+						grade = "C"; 
+					break;
+					case 4:
+						grade = "D"; 
+					break;
+					case 5 :
+						grade = "E"; 
+					break;
+				}
+				obj = {
+					name : document.getElementById('StudentName').value = document.getElementById('name').value,
+					class: document.getElementById('StudentClass').value = document.getElementById('class').value,
+					emailID : document.getElementById('emailid').value = document.getElementById("email").value,
+					tamilmark:TamilMarks,
+					engmark : EngMarks,
+					mathsmark : MathsMarks,
+					sciencemark : ScienceMarks,
+					socialsciencemark : SocialscienceMarks,
+					totalMarks : document.getElementById('TotalMarks').value= TotalMarks,
+					averageMarks: document.getElementById('AvgMarks').value =AverageMarks,
+					grade: document.getElementById('Grade').value = grade,
+					result: document.getElementById('Result').value = result,
+				}
+				return obj;
+			}
+			else{
+				alert("Pleace fill the Marks:")
+			}
+		}
+        function onEdit(id){
+			document.getElementById("updatebtn").style.display = "block" 
+			document.getElementById("savebtn").style.display = "none" 
+			var obje;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					obje = JSON.parse(this.responseText);
+					document.getElementById("name").value = obje.name
+					document.getElementById("class").value =obje.class
+					document.getElementById("email").value =obje.emailID 
+					document.getElementById("tamil").value =obje.tamilmark
+					document.getElementById("english").value = obje.engmark
+					document.getElementById("maths").value = obje.mathsmark
+					document.getElementById("science").value = obje.sciencemark
+					document.getElementById("socialscience").value= obje.socialsciencemark
+					document.getElementById("TotalMarks").value =obje.totalMarks
+					document.getElementById("AvgMarks").value =obje.averageMarks
+					document.getElementById("Grade").value = obje.grade
+					document.getElementById("Result").value = obje.result
+				}
+			}
+			xhttp.open("GET",`https://traineesapi.firebaseio.com/ashok_student/${id}.json`, true);
+			xhttp.send();
+		}
+        function update(){
+					document.getElementById("updatebtn").style.display = "none" 
+					document.getElementById("savebtn").style.display = "block"
+					let data = formdata()
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+					getAllData()
+					}
+					}
+					xhttp.open("PUT",  `https://traineesapi.firebaseio.com/ashok_student/${updateId}.json`,true);
+					xhttp.send(JSON.stringify(data));
+					reset();
+					}
+        function onDelete(id) {
+					// selectedrow = td.parentElement.parentElement;
+					// deleteIndex = selectedrow.rowIndex
+					// let delId = dummyArr[deleteIndex-1].id
+					if(confirm('Are you sure delete this record?')){
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+					getAllData()
+					}
+					}
+					xhttp.open("DELETE",`https://traineesapi.firebaseio.com/ashok_student/${id}.json`, true);
+					xhttp.send();
+					}
+					}
+				function reset() {
+					document.getElementById('myform').reset();
+					}
+    </script>
+</html>

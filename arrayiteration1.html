@@ -1,0 +1,34 @@
+<html>
+    <p id="demo"></p>
+    <body>
+        <script>
+            var array  = ['ashok',1,'Sajith','akash',4,true,{name:'ashok',age:23},false,[10,10,20,303,98],{name:'tamil',age:25},['ashok',23]]
+            function arraydata(array) {
+                array.forEach(values => {
+                    datatype = typeof values
+                    switch(datatype){
+                        case "number":
+                          arrayvalues = `The number is ${values}'<br>'` 
+                        break;
+                        case "string":
+                          string = values.charAt(0).toUpperCase() + values.slice(1)
+                            arrayvalues = `The string is ${string}'<br>'` 
+                        break;
+                        case "object":
+                          arrayvalues = `The object is ${JSON.stringify(values)}'<br>'`
+                        break;
+                        case "boolean":
+                            arrayvalues = `The boolean is ${values}'<br>'`
+                        break;
+                    }
+                    if(Array.isArray(values) == true){
+                      arraydata(values)
+                      arrayvalues = `The array is ${JSON.stringify(values)}'<br>'`
+                    }
+                   document.getElementById("demo").innerHTML += `${arrayvalues}'<br>'`;
+                })
+            }
+            arraydata(array)
+        </script>
+    </body>
+</html>

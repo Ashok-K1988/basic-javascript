@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+		         background-image: url("data:image/jpeg;base64,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");
+		         background-repeat: no-repeat;
+		         background-attachment: fixed; 
+		         background-size: 100% 120%;
+		      }
+		      a{
+		                cursor: pointer;
+		                color: rgb(55, 0, 255);
+		                text-decoration: underline;
+		                margin-right: 4px;
+		            }
+	</style>
+</head>
+<body onload="myfunction()">
+	<h1 style="color:rgb(98, 71, 250);text-align:center; text-decoration: underline;"> The Form submission </h1>
+	<form autocomplete="off" id="myform">
+		<table align="center" cellpadding="15">
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Name<td>:
+						<input type="t ext" id="name"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(214, 54, 54);">Gender<td>:
+						<input type="radio" name="Gender" value="Male" id="male" />Male
+						<input type="radio" name="Gender" value="Female" id="female" />Female</label></td>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Age<td>:
+						<input type="number" value="" id="age"></td>
+					</label>
+				</th>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">EmailID<td>:
+						<input type="text" value="" id="email"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Address<td>:
+						<input type="text" value="" id="address"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">City<td>:
+						<input type="text" value="" id="city"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(2, 3, 3);">Pincode<td>:
+						<input type="number" value="" id="pincode"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">State<td>:
+						<input type="text" value="" id="state"></td>
+					</label>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<label style="color: rgb(0, 0, 0);">Hobbies<td>:
+						<input type="checkbox" id="drawing" value="Drawing" name="hobbie" />Drawing
+						<input type="checkbox" id="cooking" value="Cooking" name="hobbie" />Cooking
+						<input type="checkbox" id="playing" value="Playing" name="hobbie" />Playing</td></label>
+				</th>
+			</tr>
+			<tr>
+				<label style="color: rgb(4, 6, 7);">
+					<th style="color: rgb(0, 0, 0);">CoursesApplied For  <td>:                        
+							<select name="Course" id="courseapplied" style="width: 75%;">
+								<option value="-1" selected style="color: rgb(192, 0, 144); ">select..</option>
+								<option value="ME">ME</option>
+								<option value="MCA">MCA</option>
+								<option value="MBA">MBA</option>
+								<option value="Ph.D">Ph.D</option>
+							</select></td> 
+				</label>
+				</th>
+			</tr>
+		</table>
+	</form>
+	<center>
+		<div id="showDetails"></div>
+		<button onclick=" submit()" value="submit" type="submit" id="savebtn" style="color: rgb(233, 14, 253);"><b>Submit</b>
+		</button>
+		<button onclick=" onUpdate()" value="submit" type="submit" id="updatebtn" style="color: rgb(8, 42, 236);"><b>Update</b>
+		</button>
+		<button onclick="reset()" type="reset" value="reset" id="resetbtn" style="color: rgb(145, 123, 0);"><b>Reset</b>
+		</button>
+	</center>
+	<table id="sampleTable" border="1" style="background: rgb(255, 253, 253); width: 100% 100%;">
+		</center>
+		<tr>
+			<td style="color: rgb(247, 14, 14);width: 10%;">Name</td>
+			<td style="color: rgb(241, 11, 11);width: 10%;">Gender</td>
+			<td style="color: rgb(230, 18, 18);width: 10%;">Age</td>
+			<td style="color: rgb(248, 11, 11);width: 10%;">EmailID</td>
+			<td style="color: rgb(218, 9, 9);width: 10%;">Address</td>
+			<td style="color: rgb(231, 16, 16);width: 10%;">City</td>
+			<td style="color: rgb(230, 25, 25);width: 10%;">Pincode</td>
+			<td style="color: rgb(226, 9, 9);width: 10%;">State</td>
+			<td style="color: rgb(240, 23, 23);width: 10%;">Hobbies</td>
+			<td style="color: rgb(218, 19, 19);width: 10%;">CourseAppliedFor</td>
+		</tr>
+	</table>
+	<script>
+		var student1 = []
+		console.log(student1)
+		function myfunction(){
+			  document.getElementById("sampleTable").style.display = "none" 
+              document.getElementById("updatebtn").style.display = "none" 
+            //   let dummyArr = JSON.parse("person")
+
+			//   var dfdf= Object.assign({},dummyArr)
+
+			//   localStorage.getItem(dfdf)
+			//   student1.push(dfdf)
+            //   console.log( dummyArr)
+			//   console.log( dfdf)
+			// //   var sdf = splice()
+			
+            }
+		    var student = []
+		      function  formData() {
+		      var updateIndex =null
+		      var selectedrow = null;
+		      var Hobbie=[]
+		        let gender = ''
+		      if(document.getElementById("male").checked){
+		        gender = document.getElementById("male").value
+		      }else{
+		        gender = document.getElementById("female").value
+		      }
+		      if(document.getElementById("drawing").checked){
+		          Hobbie += document.getElementById('drawing').value
+		      }  if(document.getElementById("cooking").checked){
+		          Hobbie += ","+ document.getElementById('cooking').value
+		      }  if(document.getElementById("playing").checked){
+		          Hobbie += "," + document.getElementById('playing').value
+		          }
+		      var studentdetails={
+		      Name:document.getElementById("name").value,
+		      Gender: gender,
+		      Age:document.getElementById("age").value,
+		      EmailID:document.getElementById("email").value,
+		      Address:document.getElementById("address").value,
+		      City:document.getElementById("city").value,
+		      Pincode:document.getElementById("pincode").value,
+		      State:document.getElementById("state").value,
+		      Hobbies:Hobbie,
+		      CourseAppliedFor:document.getElementById("courseapplied").value
+		    }
+		    student.push(studentdetails)
+		    }
+		    function submit() {
+		      formData()
+		      document.getElementById("updatebtn").style.display = "none" 
+		      document.getElementById("sampleTable").style.display = "block" 
+		      var table = document.getElementById('sampleTable')
+		      var row = table.getElementsByTagName("tr")
+		      var StudentDetails = document.getElementById('sampleTable').insertRow(row.length);
+		      for (let i=0;i<student.length;i++){
+		      StudentDetails.insertCell(0).innerHTML = student[i].Name
+		      StudentDetails.insertCell(1).innerHTML=student[i].Gender
+		      StudentDetails.insertCell(2).innerHTML=student[i].Age
+		      StudentDetails.insertCell(3).innerHTML=student[i].EmailID
+		      StudentDetails.insertCell(4).innerHTML=student[i].Address
+		      StudentDetails.insertCell(5).innerHTML=student[i].City
+		      StudentDetails.insertCell(6).innerHTML=student[i].Pincode
+		      StudentDetails.insertCell(7).innerHTML=student[i].State
+		      StudentDetails.insertCell(8).innerHTML=student[i].Hobbies
+		      StudentDetails.insertCell(9).innerHTML=student[i].CourseAppliedFor
+		      StudentDetails.insertCell(10).innerHTML= '<a onclick = "onEdit(this)" >Edit</a><a onclick = "onDelete(this)">Delete</a>'
+            }
+            localStorage.setItem("person", JSON.stringify(student1))
+		    student = []
+		    reset();
+		    }
+		    function onEdit(td) {
+		      document.getElementById("updatebtn").style.display = "block" 
+		      document.getElementById("savebtn").style.display = "none" 
+		      selectedrow = td.parentElement.parentElement;
+		      updateIndex = selectedrow.rowIndex
+		      document.getElementById("name").value = selectedrow.cells[0].innerHTML;
+		      document.getElementById("age").value = selectedrow.cells[2].innerHTML;
+		      document.getElementById("email").value = selectedrow.cells[3].innerHTML;
+		      document.getElementById("address").value = selectedrow.cells[4].innerHTML;
+		      document.getElementById("city").value = selectedrow.cells[5].innerHTML;
+		      document.getElementById("pincode").value = selectedrow.cells[6].innerHTML;
+		      document.getElementById("state").value = selectedrow.cells[7].innerHTML;
+		      document.getElementById("courseapplied").value = selectedrow.cells[9].innerHTML;
+		      var main=selectedrow.cells[1].innerHTML
+		      if(main == "Female"){
+		      document.getElementById("female").checked=true
+		      document.getElementById("male").checked = false
+		      }else{
+		        document.getElementById("female").checked= false
+		        document.getElementById("male").checked = true
+		      }
+		         var  test = selectedrow.cells[8].innerHTML || []
+		          test = test.split(',')
+		         var checkboxes = document.getElementsByName('hobbie')
+		          for (var checkbox of checkboxes) {
+		          if (test.includes(checkbox.value)) {
+		          checkbox.checked = true
+		          }
+		      }
+		      }
+		      function onUpdate(){
+		        formData();
+		        document.getElementById("updatebtn").style.display = "none" 
+		        document.getElementById("savebtn").style.display = "block" 
+		        selectedrow.cells[0].innerHTML = document.getElementById('name').value
+		        selectedrow.cells[2].innerHTML = document.getElementById('age').value
+		        selectedrow.cells[3].innerHTML = document.getElementById('email').value
+		        selectedrow.cells[4].innerHTML = document.getElementById('address').value
+		        selectedrow.cells[5].innerHTML = document.getElementById('city').value
+		        selectedrow.cells[6].innerHTML = document.getElementById('pincode').value
+		        selectedrow.cells[7].innerHTML = document.getElementById('state').value
+		        selectedrow.cells[9].innerHTML = document.getElementById('courseapplied').value
+		        let gender = ''
+		      if(document.getElementById("male").checked){
+		        gender = document.getElementById("male").value
+		      }else{
+		        gender = document.getElementById("female").value
+		      }
+		      selectedrow.cells[1].innerHTML = gender;
+		      Hobbie=[]
+		      if(document.getElementById("drawing").checked){
+		          Hobbie +=document.getElementById('drawing').value
+		      }  if(document.getElementById("cooking").checked){
+		          Hobbie += ","+ document.getElementById('cooking').value
+		      }  if(document.getElementById("playing").checked){
+		          Hobbie += "," + document.getElementById('playing').value
+		          }
+		          selectedrow.cells[8].innerHTML = Hobbie;
+		          reset();
+		      }
+		      function onDelete(td) {
+		       if(confirm('Are you sure delete this record?')){
+		       let row = td.parentElement.parentElement;
+		
+		       document.getElementById("sampleTable").deleteRow(row.rowIndex);
+		     } }
+		    function reset() {
+		      student = []
+		      document.getElementById('myform').reset();
+            }
+            // if (typeof(Storage) !== "undefined") {
+            // localStorage.setItem("person","student")
+            // }
+	</script>
+</body>
+
+</html>

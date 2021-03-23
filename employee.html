@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h1> The jsobject can be followed </h1>
+        <p> The objects are  print the value </p>
+        <button onclick="Myfunction()">Clickme</button>
+        <p id="demo"></p>
+        <script>
+            var employee = { id: 1001, name: "Test", dues: [500, 1000, 1500] };
+            function Myfunction()
+            {
+             for(let i = 0; i < employee.dues.length; i++){
+	         if(employee.dues[i] === 500){
+                employee.dues[i] = employee.dues[i] - 0 }
+             if(employee.dues[i] === 1000){ 
+                employee.dues[i] = employee.dues[i] - 10 }
+             if(employee.dues[i] === 1500){
+                employee.dues[i] = employee.dues[i] - 20 }
+		}
+            document.getElementById("demo").innerHTML=employee.dues;
+            }
+        </script>
+    </body>
+</html>
+

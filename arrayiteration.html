@@ -1,0 +1,53 @@
+<html>
+    <p id="demo"></p>
+    <body>
+        <script>
+            var array  = ['ashok',1,'Sajith',4,true,{name:'ashok',age:23},false,[10,10,20,303,98],{name:'tamil',age:25},['ashok',23]]
+            var boolean = ''
+            array1 =[]
+            var number = 0
+            var string = ''
+            var object = {}
+            function arraydata(array) {
+                array.forEach(value => {
+                    if(typeof(value)=="string"){
+                        switch (value[0]){
+                            case value[0].toLowerCase():
+                                value[0].toUpperCase()
+                                string +=`'<br>'The type  is:${typeof value} and the value first letter is small: ${value}`;
+                            break;
+                            case value[0].toUpperCase():
+                               string += `The type  is:${typeof value} and the value first letter is capital: ${value}`;
+                            break;
+                        }
+                    }
+                    if(typeof(value)=="number"){
+                        number += `'<br>'The type  is:${typeof value} and the value is: ${value}` ;
+                    }
+                    if(typeof(value)== "boolean"){
+                        boolean += `'<br>'The type  is:${typeof value} and the value is: ${value}` ;
+                    }
+                    if(Array.isArray(value)){
+                        if(value == ''){
+                            array1 = `The type  is:${typeof value} and the value is empty`
+                        }else {
+                            array1 += `'<br>'The type is:${typeof value} and the value is: ${JSON.stringify(value)}` ; 
+                        }
+                    }
+                    if(typeof(value) == "object" && !Array.isArray(value)){
+                        let objectvalue = Object.values(value)
+                        if(objectvalue == ''){
+                            object = `The type  is:${typeof value} and the value is empty`
+                        }else {
+                            object += `'<br>'The type  is:${typeof value} and the value is: ${JSON.stringify(value)}` ; 
+                        }
+                    }
+                })
+            }
+            arraydata(array)
+            // arraydata(['ashok',23])
+            // arraydata([10,10,20,303,98])
+            document.getElementById("demo").innerHTML = `${string}'<br>''<br>'${number}'<br>''<br>'${boolean}'<br>''<br>'${object}'<br>''<br>'${[array1]}`
+        </script>
+    </body>
+</html>

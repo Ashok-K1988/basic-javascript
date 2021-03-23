@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <h1>voting point
+         
+        </h1>
+        <p> voting</p>
+        <p id="demo"></p>
+        <button onclick="person()">clickme </button>
+
+        <script>
+        
+         function person()
+         { 
+            ( prompt ("enter your name")  );
+            var val = prompt("enter your age",'');
+            var person1;
+            let age = Number(val)
+          if (age<18)
+          {
+           person1= "You are not Eligible for voting";
+            
+          } 
+          else{
+           person1="You are Eligible for voting";
+      
+        }
+          document.getElementById("demo").innerHTML = person1;
+    }
+        </script>
+    </body>
+</html>

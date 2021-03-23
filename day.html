@@ -1,0 +1,52 @@
+<html>
+    <body>
+        <p id="demo"></p>
+    </body>
+    <script>
+        value = Number(prompt("Enter the Day:"))
+        var isValidDay = true
+        var allDays = [
+            {day: 1, text: 'Sunday'},
+            {day: 2, text: 'Monday'},
+            {day: 3, text: 'Tuesday'},
+            {day: 4, text: 'Wednesday'},
+            {day: 5, text: 'Thursday'},
+            {day: 6, text: 'Friday'},
+            {day: 7, text: 'Saturday'}
+        ]
+        function day (value) { 
+            let obj = allDays.find(x => x.day === value)
+            var resultTag = document.getElementById("demo")
+            if (obj && obj.text) resultTag.innerHTML = `The Entered day is: ${obj.text}`
+            else resultTag.innerHTML = 'Enter the valid days'
+            /* switch(value){
+                case 1:
+                    day = "sunday";
+                    break;
+                case 2:
+                    day = "Monday";
+                    break
+                case 3:
+                    day = "Tuesday";
+                    break;
+                case 4 :
+                    day = "Wednesday"
+                  break;
+                case 5:
+                    day = "Thursday"
+                    break;
+                case 6:
+                    day = "Friday"
+                    break;
+                case 7:
+                    day = "Saterday";
+                    break;
+                default:
+                    isValidDay = false
+                    day = "Enter the valid days"
+            } */
+        }
+        day(value)
+        var resultTag = document.getElementById("demo")
+    </script>
+</html>

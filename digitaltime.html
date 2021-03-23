@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+        <style>
+            body{
+                background-color: rgb(31, 26, 26);
+            }
+            .name{
+                position: absolute;
+                top: 40%;
+                left: 35%;
+                color: #22c9ee;
+                font-size: 80px;
+                font-family:'Orbitron', sans-serif;;
+                letter-spacing: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="demo" class="name" onload="time()"></div>
+    </body>
+    <script>
+        function time() {
+            var day = new Date();
+            var h = day.getHours();
+            var m = day.getMinutes();
+            var s = day.getSeconds();
+            var session = "AM"
+            if(h === 0){
+                h=12;
+            }
+            if(h >= 12){
+                h = h - 12;
+                session = "PM"
+            }
+            h = (h < 10) ? "0" + h : h
+            m = (m < 10) ? "0" + m : m
+            s = (s < 10) ? "0" + s : s
+            var time = `${h}:${m}:${s} ${session}`
+            document.getElementById("demo").innerText = time;
+            document.getElementById("demo").textContent = time;
+        }
+        setInterval(function(){ time() }, 1000);
+        
+    </script>
+</html>

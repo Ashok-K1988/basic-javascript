@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>This is the web page</title>
+    </head>
+    <body onload="upload()">
+        <p id="demo"></p>
+        <script>
+            var values = [];
+            var data = {}
+            function  Get() {
+                data = {
+                    name: prompt("Enter your name: "),
+                    age: prompt("Enter your age:"),
+                    class: prompt("Enter your class:")
+                }
+                return data;
+            }   
+            function upload() {
+                let val = Get()
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        retur();
+                    }
+                }
+                xhttp.open("POST", "https://traineesapi.firebaseio.com/SAJITH.json", true);
+                xhttp.send(JSON.stringify(val));
+            }
+            function retur() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let date = JSON.parse(this.responseText)
+                        for (let i in date) {
+                            console.log(date[i]);
+                            values.push(date[i])
+                        }
+                        document.getElementById("demo").innerHTML = JSON.stringify(values);
+                    }
+                }
+                xhttp.open("GET", "https://traineesapi.firebaseio.com/SAJITH.json", true);
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>

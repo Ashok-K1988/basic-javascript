@@ -1,0 +1,53 @@
+<html>
+    <body>
+        <p id="demo"></p>
+        <button id="click" onclick="myfunction()">click</button>
+    </body>
+    <script>
+        var array1 = [1,2,3,4,5,6,7,8,9,10]
+        var array2 = [1,2,3,4,5,6,7,8,9,10]
+        var arr1 = []
+        var arr2 =[]
+        var count = 0;
+        function myfunction() {
+            if(array1.length !== array2.length){
+              document.write("false")
+            }else if (array1.length === array2.length){
+                var as = array1.sort()
+                var sd = array2.sort()
+                as.forEach(val =>{
+                    if(!arr1.includes(val)){
+                        arr1.push(val)
+                    }
+                })
+                sd.forEach(val =>{
+                    if(!arr2.includes(val)){
+                        arr2.push(val)
+                    }
+                })
+                console.log(arr1,arr2);
+                if(arr1.length === arr2.length){ś
+                    arr1.forEach(val =>{
+                        arr2.find(value => {
+                            if(val === value){
+                                count++
+                            }
+                        })
+                    })
+                    if (count === arr1.length) {
+                        document.write ("true")
+                    }
+                    else {
+                        document.write("false")
+                    }
+                    count = 0
+                }else {
+                    document.write("false")
+                }
+            }
+            else{
+                document.write("false")
+            }
+        }
+    </script>
+</html>

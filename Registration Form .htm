@@ -1,0 +1,190 @@
+<html>
+    <head>
+      <style>
+        body {
+           background-color:rgb(215, 243, 243);
+        }
+      </style>
+        <title>Student Registration Form Using Table in HTML</title>
+    </head>
+  <body onload="startfunction()">
+    <h2 style="color:rgb(4, 5, 114);text-align:center;">Student Registration Form Using Table in HTML</h2>
+    <table align="center" cellpadding = "10">
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" name="FirstName" maxlength="50" id="fname" />
+            </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><input type="text" name="LastName" maxlength="50" id="lname" />
+          </td>
+        </tr>
+        <tr>
+            <td>Email ID</td>
+            <td><input type="email" name="EmailID" maxlength="100" id="emailid" /></td>
+        </tr>
+        <tr>
+            <td>Mobile Number</td>
+            <td>
+              <input type="number" name="MobileNumber" oninput="phoneNumber()" id="Mnumber" / >
+            </td>
+        </tr> 
+        <tr>
+            <td>Gender</td>
+            <td>
+             <input type="radio" name="Gender" value="Male" id="gender"/>
+               Male
+              <input type="radio" name="Gender" value="Female" id="gender" />
+              Female
+            </td>
+        </tr>
+        <tr>
+            <td>Address<br /><br /><br /></td>
+            <td><textarea name="Address" rows="3" cols="15" id="address"></textarea></td>
+        </tr>
+        <tr>
+            <td>City</td>
+                <td><input type="text" name="City" maxlength="50" id="city" />
+            </td>
+        </tr>
+        <tr>
+            <td>Pin Code</td>
+            <td><input type="Number" name="PinCode" maxlength="6" id="pincode"/>
+            </td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td><input type="text" name="State" maxlength="50" id="state"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td><input type="text" name="Country" id="country" /></td>
+        </tr>
+        <tr>
+            <td>Hobbies <br /><br /><br /></td>
+            <td>
+              <input type="checkbox" name="HobbyDrawing" value="Drawing" id="hobbies" />
+                 Drawing
+              <input type="checkbox" name="HobbySinging" value="Singing" id="hobbies" />
+                 Singing
+              <input type="checkbox" name="HobbyDancing" value="Dancing" id="hobbies" />
+                 Dancing
+              <input type="checkbox" name="HobbyCooking" value="Cooking" id="hobbies" />
+                 Sketching
+              <br />
+              <input type="checkbox" name="HobbyOther" value="Other">
+                 Others
+              <input type="text" name="Other_Hobby" maxlength="50" id=other_hobby />
+            </td>
+        </tr>
+        <tr>
+            <td>Qualification <br /><br /><br /></td>
+            <td>
+                 <br/>
+                <input type="checkbox" name="HighSchool" value="High School" id="highschool" />
+                     High School(10th)<br>
+                <input type="checkbox" name="HigherSchool" value="Higher School" id="highschool" />
+                     Higher School(12th)<br/>
+                <input type="checkbox" name="Graduation" value="Graduation" id="highschool" />
+                  Graduation(Bachelors of science)<br/>
+                <input type="checkbox" name="Engineering" value="Engineering" id="highschool" />
+                   Graduation (Bachelor of Engineering)<br/>
+            </td>
+        </tr>
+        <tr>
+            <td>Courses<br />Applied For</td>
+              <td><select name="Course">
+              <option value="-1" selected>select..</option>
+              <option value="ME" id="me">ME</option>
+              <option value="MCA" id="mca">MCA</option>
+              <option value="MBA" id="mba">MBA</option>
+              </select></td>
+              </tr>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+              <input type="submit" value="Submit" onclick="submit()">
+              <input type="reset" value="Reset">
+            </td>
+        </tr>
+    </table>
+             <div id="showDetails"></div>
+              <table id="sampleTable" border="1"> 
+           <tr>
+             <td>FirstName</td> 
+           <td>LastName</td>
+           <td>EmailID</td>
+           <td>Mobile Number</td>
+           <td>Gender</td>
+           <td>Adress</td>   
+           <td>City</td>
+           <td>Pincode</td>
+           <td>State</td> 
+           <td>Country</td> 
+           <td>Hobbies</td> 
+           <td>Qualification</td>
+           <td>CourseAppliedFor</td> 
+           </tr> 
+       </table>
+    <script>
+      function startfunction() {
+        document.getElementById("sampleTable").style.display = "none" 
+      }
+      function phoneNumber(value) {
+        var len = document.getElementById('Mnumber').value
+        if(len.length > 10) {
+          document.getElementById('Mnumber').value = ''
+          alert('should not be above 10 digits')
+        }
+      }
+      function submit() {
+        document.getElementById("sampleTable").style.display = "block"
+                var FirstName = document.getElementById('fname').value
+                var LastName = document.getElementById('lname').value
+                var EmailID = document.getElementById('emailid').value
+                var Gender = document.getElementById('gender').value
+                var Adress = document.getElementById('address').value
+                var City = document.getElementById('city').value
+                var Pincode = document.getElementById('pincode').value
+                var State= document.getElementById('state').value
+                var Country = document.getElementById('country').value
+                var Hobbies = document.getElementById('hobbies').value
+                console.log(Hobbies)
+                var Qualification = document.getElementById('highschool','highschool','graduation','engineering').value
+                var CourseAppliedFor = document.getElementById('mba','mca','me').value
+                var StudentDetails = document.getElementById('sampleTable').insertRow(1);
+                if (StudentDetails == 1){
+                    document.getElementById("sampleTable").innerHTML=StudentDetails;
+                    console.log(StudentDetails)
+                }
+                var a = StudentDetails.insertCell(0);
+                var b = StudentDetails.insertCell(1);
+                var c = StudentDetails.insertCell(2);
+                var d = StudentDetails.insertCell(3);
+                var e = StudentDetails.insertCell(4);
+                var f = StudentDetails.insertCell(5);
+                var g = StudentDetails.insertCell(6);
+                var h = StudentDetails.insertCell(7);
+                var i = StudentDetails.insertCell(8);
+                var j = StudentDetails.insertCell(9);
+                var k = StudentDetails.insertCell(10);
+                var l = StudentDetails.insertCell(11);
+
+                a.innerHTML= fname;
+                b.innerHTML= lname;
+                c.innerHTML= emailid;
+                d.innerHTML= gender;
+                e.innerHTML= address;
+                f.innerHTML= city;
+                g.innerHTML= pincode;
+                h.innerHTML= state;
+                i.innerHTML= country;
+                j.innerHTML= Hobbies;
+                k.innerHTML= highschool,highschool,graduation,engineering;
+                k.innerHTML= mba,mca,me;
+      }
+    </script>
+  </body>
+</html>

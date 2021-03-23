@@ -1,0 +1,48 @@
+<html>
+    <body>
+        <p id="demo"></p>
+    </body>
+    <script>
+        // var string = []
+        // var vowels1 = ["a", "e", "i", "o", "u"]
+        var str = prompt("Enter the string:")
+        var object = {A:'', E:'', I:'', O:'',U:''} 
+        var ar = []
+        function vowels(str) {
+            // ar.push(str.match(/[a]/gi).length)
+            object.A = str.match(/[a]/gi).length
+            object.E = str.match(/[e]/gi).length
+            object.I = str.match(/[i]/gi).length
+            object.O = str.match(/[o]/gi).length
+            object.U = str.match(/[u]/gi).length
+            return object;
+            console.log(object);
+        }
+        vowels(str)
+        document.getElementById("demo").innerHTML = JSON.stringify(object);
+        console.log(object)
+        console.log(object);
+        // function vowels(str){
+        //     let value = str.split("")
+        //     value.filter(val => {
+        //         if (vowels1.includes(val)) {
+        //             string.push(val)
+        //         }
+        //     }) 
+        //     duplicate(string)
+        // }
+        // function duplicate(string){
+        // let counts = {}
+        //     for(let i =0; i < string.length; i++){ 
+        //         if (counts[string[i]]){
+        //             counts[string[i]] += 1
+        //         } 
+        //         else {
+        //             counts[string[i]] = 1
+        //         }
+        //     }  
+        //     document.getElementById("demo").innerHTML = JSON.stringify(counts);
+        // }
+        // vowels(str);   
+    </script>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <p id="deom"></p>
+        <button id="click" onclick="myfunction(array1,array2)">Clickme</button>
+    </body>
+    <script>
+        var array1 = [1,2,3,4,1]
+        var array2 = [1,1,2,3,4]
+        var count = 0
+        
+        function myfunction(array1,array2) {
+            if(array1.length === array2.length){ 
+            array1.forEach(val =>{
+                array2.map(value => {
+                    if(val === value){
+                        count++
+                    }
+                })
+            })
+            if (count === array1.length) {
+                document.write ("true")
+            }else {
+                document.write("false")
+            }
+            count = 0
+           }else {
+               document.write("false")
+           }
+        }
+    </script>
+</html>

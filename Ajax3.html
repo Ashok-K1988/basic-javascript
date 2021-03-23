@@ -1,0 +1,32 @@
+<html>
+    <body>
+       <center> <div id="demo1">
+          <h1> The page are display</h1>
+          <button onclick="loadXMLDoc()" value="submit" id="click">click</button>
+         </div></center>
+         <p id="demo"></p>
+         <script>
+             var sdf;
+            function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            sdf = JSON.parse(this.responseText);
+            myFunction();
+            }
+            };
+
+            xmlhttp.open("GET", "https://reqres.in/api/users?delay=3", true);
+
+            xmlhttp.send();
+            }
+            function myFunction(xml){
+               var as=[];
+               for(let i=0;i<sdf.data.length;i++){
+                as.push(sdf.data[i])
+               }
+               document.getElementById("demo").innerHTML = JSON.stringify(as);
+            }
+         </script>
+    </body>
+</html>

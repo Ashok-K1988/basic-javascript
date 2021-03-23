@@ -1,0 +1,16 @@
+<html>
+    <p id="demo"></p>
+    <body>
+        <script>
+             var student = [{ id: 1, name: "stud1", tamil: 35, eng: 54, maths: 45 }, { id: 2, name: "stud2", tamil: 72, eng: 64, maths: 82 },
+              { id: 3, name: "stud3", tamil: 55, eng: 37, maths: 52 }]
+              var sdf = prompt("Enter Your Name:")
+              for(let i=0;i<student.length;i++){
+                  if(sdf==student[i].name){
+                var asd = student[i].tamil+ student[i].eng + student[i].maths;
+                student[i].total = asd;
+                document.getElementById("demo").innerHTML = JSON.stringify(student[i])
+                }}
+        </script>
+    </body>
+</html>

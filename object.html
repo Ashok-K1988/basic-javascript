@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <p id="demo"></p>
+    </body>
+    <script>
+        var hobbies1 = []
+        var object = {}
+        const users = [
+            { name: "John", hobbies: ["singing", "walking", "playing guitar"] },
+            { name: "doe", hobbies: ["singing", "walking", "playing guitar","playing"]},
+            { name: "Terry", hobbies: ["swimming", "playing guitar"] },
+            { name: "Anna", hobbies: ["walking", "swimming", "playing guitar"] },
+            { name: "Paul", hobbies: ["swimming", "singing"] }]
+            users.forEach(val => {
+                for( i in val.hobbies) {
+                    if(hobbies1.indexOf(val.hobbies[i]) === -1){
+                        hobbies1.push(val.hobbies[i])
+                    }
+                }
+            })
+            hobbies1.forEach(val => {
+                object[val] = []
+            })
+            for(let i=0;i<hobbies1.length;i++){
+                users.forEach(val =>{
+                    if(val.hobbies.includes(hobbies1[i])) {
+                    object[hobbies1[i]].push(val.name)
+                }
+                })
+            }
+          document.getElementById("demo").innerHTML = JSON.stringify(object);
+    </script>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <body>
+        <p id="deom"></p>
+        <button id="click" onclick="myfunction(array1,array2)">Clickme</button>
+    </body>
+    <script>
+        var array1 = [1,2,3]
+        var array2 = [1,2,'3']
+        // var array3 = []
+        function myfunction(array1,array2) {
+            if(array1.length !== array2.length){
+                return false
+            }
+             else if(array1.length === array2.length){
+             var as = array1.forEach(val =>{
+             var sd = array2.map(value => {
+                    if(val !== value){
+                        return false;
+                    }
+                    return true
+                })
+                document.write(sd)
+                console.log(sd)
+               })
+              
+           }
+        }
+        document.write(myfunction(array1,array2))
+        
+
+
+
+
+
+        // function equal() {
+        //     if(array1.length === array2.length){
+        //         var as = array1.map(val => {
+        //             array2.map( value => value === val)
+        //             return true
+        //         })
+        //       return as
+        //       return false
+        //     }else if(array1.length != array2.length){
+        //         return false
+        //     }
+
+
+        //     if(array1.length != array2.length){
+        //         return false
+        //     }
+        //     else {
+        //         array1.forEach(val =>{ 
+        //             array2.map(value => {
+        //                 if(val === value){
+        //                     return true
+        //                 }
+        //             })
+        //             // return false
+        //         })
+        //         return true
+        //     }
+        // }
+        // document.write(equal())
+    </script>
+</html>

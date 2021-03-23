@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <p id="demo"></p>
+        <input type="button" value="click" onclick="aclick()">
+        <script>
+            function loadImage(url) {
+                return new Promise((resolve, reject) => {
+                    let img = new Image();
+                    img.addEventListener('load', e =>{
+                        resolve(img);
+                    })
+                    img.addEventListener('error', () => {
+                        reject(new Error(`Failed to load image's URL: ${url}`));
+                    });
+                    img.src = url;
+                });
+            }
+            loadImage('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80')
+            .then(img =>{   document.getElementById('demo').appendChild(img)})
+            loadImage('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg')
+            .then(img =>{   document.getElementById('demo').appendChild(img)})
+            loadImage('https://i.pinimg.com/originals/ca/76/0b/ca760b70976b52578da88e06973af542.jpg')
+            .then(img =>{   document.getElementById('demo').appendChild(img)})
+            loadImage('https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80')
+            .then(img =>{   document.getElementById('demo').appendChild(img)})
+            .catch(error =>{
+                console.log(error)
+                console.log("demo11");
+            });
+            function aclick() {
+                window.open('https://www.google.com/')
+            }
+        </script>
+    </body>
+</html>

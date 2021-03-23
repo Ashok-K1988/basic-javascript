@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: rgb(104, 163, 219);
+            }
+            #demo{
+                font-size: 30px;
+                font-size: 30px;
+            }
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    </head>
+    <body onload="Qoutesgenerate()">
+        <div class="d-flex align-items-center justify-content-center" style="height: 10%;">
+            <button type="button" class="btn btn-success mx-auto my-auto" id="click" onclick="Qoutesgenerate()">Click</button>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <p id="demo"></p> 
+        </div>
+    </body>
+    <script>
+        var quotes = [{string:"This is random contant",auther:'vinoth'},
+                     {string:"This is random contant1",auther:'sajith'},
+                     {string:"This is random contant2",auther:'ashok'},
+                     {string:"This is random contant3",auther:'akash'},
+                     {string:"This is random contant4",auther:'ritaz'},
+                     {string:"This is random contant5",auther:'santhosh'}]
+        function Qoutesgenerate() {
+            randomquote = quotes[Math.floor(Math.random()*quotes.length)]
+           document.getElementById("demo").innerHTML = `<p>${randomquote.string}</p><p><br>${'-'}${randomquote.auther}</p>`
+        }
+    </script>
+</html>

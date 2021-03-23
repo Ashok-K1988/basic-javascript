@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <p id="demo"></p>
+    </body>
+    <script>
+        const users = [
+            { name: "John", hobbies: ["singing", "walking", "playing guitar","pubg"] },
+            { name: "Terry", hobbies: ["swimming", "playing guitar"] },
+            { name: "Anna", hobbies: ["walking", "swimming", "playing guitar","pubg"] },
+            { name: "Paul", hobbies: ["swimming", "singing"] }]
+        var array = ["singing","walking", "swimming","playing guitar"]
+        var object = {'singing':[],'walking':[],'swimming':[],'playing guitar':[]}
+        users.forEach(val =>{
+            for(let i=0;i<array.length;i++){
+                if (val.hobbies.includes(array[i])){ 
+                    object[array[i]].push(val.name)
+                }
+            }
+        })
+        document.getElementById("demo").innerHTML = JSON.stringify(object);
+    </script>
+</html> 

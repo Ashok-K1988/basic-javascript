@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <p id="demo"></p>
+    </body>
+    <script>
+        var pets = ['dog', 'chicken', 'cat', 'dog', 'chicken', 'chicken','cat', 'rabbit','cow','man'];
+        var result = pets.reduce(function (first,second) {
+            if(!first[second]){
+                first[second] =  1;
+            }else{
+                first[second]++
+            }
+            return first;
+        },{})
+        document.getElementById("demo").innerHTML = JSON.stringify(result);
+    </script>
+</html>

@@ -1,0 +1,13 @@
+<html>
+    <p id="demo"></p>
+    <body>
+        <script>
+        var text = 'Convert the given'
+        function camelize(text) {
+        text = text.replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
+        return text.substr(0, 1).toUpperCase() + text.substr(1);
+        }
+        document.getElementById("demo").innerHTML= camelize(text);
+        </script>
+    </body>
+</html>

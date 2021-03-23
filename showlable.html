@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <center>
+            <label>Enter value:</label>
+            <input id="inputvalue" type="text"  oninput ="onchange1()" value=""><br><br><br>
+            <label id="text"></label>
+        </center>
+    </body>
+    <script>
+        function onchange1() {
+            document.getElementById("text").innerText =  document.getElementById("inputvalue").value.toUpperCase()
+        }
+    </script>
+</html>
