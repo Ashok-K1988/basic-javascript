@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <p id="demo"></p>
+        <button id="click" onclick="myfunction()">Click</button>
+    </body>
+    <script>
+        var obj1 = {name: 'ashok',age:23,place:'tirupattur'}
+        var obj2 = {name: 'ashok',age:23,place:'tirupattur'}
+        function myfunction() {
+           var a1 = Object.keys(obj1)
+           var s1 = Object.keys(obj2)
+           var check = 0
+            if(a1.length === s1.length){
+                for(let i = 0; i < a1.length; i++){
+                    a1[i] === s1[i] ? (obj1[a1[i]] === obj2[s1[i]] ? check++ : check--) :  check--
+                }
+                check === a1.length ? console.log('true') : console.log('false')
+            }
+        }
+    </script>
+</html>
