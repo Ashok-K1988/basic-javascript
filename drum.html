@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <style>
+            .playing{
+                transform:scale(1.1);
+                border-color: aquamarine;
+                box-shadow: 0 0 10px red;
+            }
+            kbd{
+                display: block;
+                font-size: 40px;
+            }
+            .sound{
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: blue;
+            }
+            .key{
+                border: 4px solid black;
+                border-radius: 5px;
+                margin: 1rem;
+                font-size: 1.5rem;
+                padding: 1rem 0.5rem;
+                transition: all 0.07s;
+                width: 100px;
+                text-align: center;
+                color:blueviolet;
+                background:brown;
+                text-shadow: 0 0 5px blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="keys">
+            <div data-key="65" class="key" style="float: left;margin-top: 500px;">
+                <kbd>A</kbd>
+                <span class="sound">Clap</span>
+            </div>
+            <div data-key="83" class="key" style="float: left; margin-top: 500px;">
+                <kbd>S</kbd>
+                <span class="sound">hihat</span>
+            </div>
+            <div data-key="68" class="key" style="float: left; margin-top: 500px;">
+                <kbd>D</kbd>
+                <span class="sound">kick</span>
+            </div>
+            <div data-key="70" class="key" style="float: left; margin-top: 500px;">
+                <kbd>F</kbd>
+                <span class="sound">openhat</span>
+            </div>
+            <div data-key="71" class="key" style="float: left; margin-top: 500px;">
+                <kbd>G</kbd>
+                <span class="sound">boom</span>
+            </div>
+            <div data-key="72" class="key" style="float: left; margin-top: 500px;">
+                <kbd>H</kbd>
+                <span class="sound">ride</span>
+            </div>
+            <div data-key="74" class="key" style="float: left; margin-top: 500px;">
+                <kbd>J</kbd>
+                <span class="sound">snare</span>
+            </div>
+            <div data-key="75" class="key" style="float: left; margin-top: 500px;">
+                <kbd>K</kbd>
+                <span class="sound">tom</span>
+            </div>
+            <div data-key="76" class="key" style="float: left; margin-top: 500px;">
+                <kbd>L</kbd>
+                <span class="sound">tink</span>
+            </div>
+        </div>
+        <audio data-key="65" src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Claps/147[kb]squeezle-clap.wav.mp3"></audio>
+        <audio data-key="83" src="https://www.fesliyanstudios.com/play-mp3/6712"></audio>
+        <audio data-key="68" src="https://www.fesliyanstudios.com/play-mp3/1154"></audio>
+        <audio data-key="70" src="https://www.fesliyanstudios.com/play-mp3/5782"></audio>
+        <audio data-key="71" src="https://www.fesliyanstudios.com/play-mp3/6712"></audio>
+        <audio data-key="72" src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Claps/147[kb]squeezle-clap.wav.mp3"></audio>
+        <audio data-key="74" src="https://www.fesliyanstudios.com/play-mp3/1154"></audio>
+        <audio data-key="75" src="https://www.fesliyanstudios.com/play-mp3/1154"></audio>
+        <audio data-key="76" src="https://www.fesliyanstudios.com/play-mp3/6712"></audio>
+    </body>
+    <script>
+        function playsound(a) {
+            var audio = document.querySelector(`audio[data-key='${a.keyCode}']`)
+            var key = document.querySelector(`.key[data-key='${a.keyCode}']`)
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing')
+        }
+        function removeTransition(a) {
+            if(a.propertyName !== 'transform') return;
+            this.classList.remove('playing')
+        }
+        var keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+        window.addEventListener('keydown',playsound)
+    </script>
+</html>
