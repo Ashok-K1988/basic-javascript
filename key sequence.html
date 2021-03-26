@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>This is the title on the key sequence</title>
+        <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    </head>
+    <body>
+    <script>
+        const preshed = [];
+        const secretcode = "wesbos"
+        window.addEventListener('keyup', (e)=>{
+            preshed.push(e.key);
+            preshed.splice(-secretcode.length - 1 ,preshed.length - secretcode.length );
+            if(preshed.join('').includes(secretcode)){
+                console.log("Ding Ding!");
+                cornify_add();
+            }
+        })
+    </script>
+    </body>
+</html>
