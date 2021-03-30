@@ -221,6 +221,7 @@
 		         var  test = selectedrow.cells[8].innerHTML || []
 		          test = test.split(',')
 		         var checkboxes = document.getElementsByName('hobbie')
+				 console.log(checkboxes);
 		          for (var checkbox of checkboxes) {
 		          if (test.includes(checkbox.value)) {
 		          checkbox.checked = true

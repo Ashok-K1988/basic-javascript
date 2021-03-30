@@ -1,0 +1,350 @@
+<html>
+   <head>
+    <link rel="stylesheet" type="text/css" href="CRUDdata.css">
+   </head>
+    <body onload="onload1()">
+        <div>
+            <form align="center" id="myform">
+                <h1 align="center"> The Form </h1>
+                <label id="name1">Name: </label>
+                <input type="text" id="name" required>
+                <label class = "requiered" id="name2">Name is not fill!!</label> <br><br>
+                <label id="calss">Class  : </label>
+                <input type="text" id="class1" required> <br><br>
+                <label class = "requiered" id="class2" >Class is not fill!!</label>
+                <label id="area1">Area: </label>
+                <input type="text" id="area" required> <br><br>
+                <label class = "requiered" id="area2" >Area is not fill!!</label><br>
+                <label id="class">city: </label>
+                <select id="city" onclick="option12()" class="box" required> <br>
+                </select><br><br>
+                <label class = "requiered" id="city1" >City is not fill!!</label>
+                <label id="state1" >state: </label>
+                <select id="state" onclick ="option()" class="box" required>  </select>
+                <label class = "requiered" id="state2" >State is not fill!!</label>
+            </form>
+            <div align="center">
+            <button id="submit"  onclick="submit()">Submit</button><br>
+            <input type="button" onclick="reset()"  value="Reset" id="reset"><br>
+            <input type="button" onclick="updatedata()" value="Update" id="update"><br>
+        </div>
+        </div>
+        <div id="search">
+            <input type="button" id="delete12" value="delete" onclick="delMultipleData()">
+            <input type="text" id="searchInput"  class="search" onkeyup="saerch1()" placeholder="Search  ..." title="Type in a name">
+            <select id="select1" class="search" onchange="filter1()">
+                <option value="-1" selected>select City..</option>
+                <option value="Tirupattur" >Tirupattur</option>
+                <option value="velore" >velore</option>
+                <option value="krishnagiri" >krishnagiri</option>
+            </select>
+            <select id="select" class="search" onchange="filter()">
+                <option value="-1" selected>select State..</option>
+                <option value="tamil nadu" >Tamil Nadu</option>
+                <option value="kerala" >Kerala</option>
+                <option value="karnataka" >Karnataka</option>
+            </select>
+    
+        </div><br><br><br>
+        <div id="table">
+            <table id="sampleTable" border="1"  width="100%" style="text-align: center; border-collapse: collapse;">
+                <thead style="background-color:rgb(218, 218, 218);">
+                    <tr> 
+                        <div id="tbhead"  border="1"  width="100%" style="text-align: center; border-collapse: collapse;">
+                            <th style="width: 20%;">Name</th> 
+                            <th style="width: 10%;">Class</th> 
+                            <th style="width: 15%;">Area </th> 
+                            <th style="width: 20%;">City</th> 
+                            <th style="width: 15%;">State</th>   
+                        </div>
+                        <th style="width: 17%;" class="nohover">Action</th>
+                        <th style="width: 3%;" class="nohover"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbdata"></tbody>
+                </div>
+            </table>
+        </div>
+    </body>
+    <script>
+        var data =[]
+        var getid;
+        var ids = []
+        function onload1(){
+            let buttonid = [{id:"update",value:"none"},    
+                            {id:"submit",value:"block"},
+                            {id:"search",value:"none"},  
+                            {id:"table",value:"none"},
+                            {id:"myform",value:"block"},
+                            {id:"name2",value:"none"},
+                            {id:"class2",value:"none"},
+                            {id:"area2",value:"none"},
+                            {id:"city1",value:"none"},
+                            {id:"state2",value:"none"}]
+            buttonid.forEach(val => {
+                document.getElementById(val.id).style.display = val.value
+            })
+        }
+        function getdata(){
+            var getperson ={}
+            getperson = {
+                name : document.getElementById("name").value,
+                class1 : document.getElementById("class1").value,
+                area : document.getElementById("area").value,
+                city : document.getElementById("city").value,
+                state : document.getElementById("state").value,
+            }
+            return getperson;
+        }
+        function option(){
+            var option1 = ["-1","Tamil Nadu","kerala","karnataka"]
+            var select = document.getElementById("state");
+            option1.map(val =>{
+               var value = document.createElement("option");
+                value.text = val
+                select.add(value);
+            })
+        }
+        function option12(){
+            var option1 = ["-1","Tirupattur","velore","Krishnagiri"]
+            var select = document.getElementById("city")
+            option1.map(val =>{
+                value = document.createElement("option")
+                value.text = val;
+                select.add(value)
+            })
+        }
+        function submit(){
+            var data = getdata ()
+            if (data.name == "" ) {
+                document.getElementById("name2").style.display = 'block'
+            }
+            else {
+                document.getElementById("name2").style.display = 'none'
+            }
+            if(data.class1 == "" ){
+                document.getElementById("class2").style.display = 'block'
+            }
+            else {
+                document.getElementById("class2").style.display = 'none'
+            }
+            if(data.area == "" ){
+                document.getElementById("area2").style.display = 'block'
+            }
+            else {
+                document.getElementById("area2").style.display = 'none'
+            }
+            if(data.city == "" ){
+                document.getElementById("city1").style.display = 'block'
+            }
+            else {
+                document.getElementById("city1").style.display = 'none'
+            }
+            if(data.state == "" ){
+                document.getElementById("state2").style.display = 'block'
+            }
+            else {
+                document.getElementById("state2").style.display = 'none'
+            }
+            if(data.name && data.class1 && data.area && data.city && data.state){
+                let buttonid = [{id:"search",value:"block"},    
+                                {id:"table",value:"block"},
+                                {id:"myform",value:"none"},  
+                                {id:"reset",value:"none"},
+                                {id:"submit",value:"none"}]
+                buttonid.forEach(val => { 
+                    document.getElementById(val.id).style.display = val.value
+                })
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    getdatafromapi()
+                }
+                };
+            xhttp.open("POST", "https://traineesapi.firebaseio.com/process.json", true);
+            xhttp.send(JSON.stringify(data));
+            }
+          
+        }
+        
+        function getdatafromapi(){
+             data =[]
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let emptyobj = JSON.parse(this.responseText)
+                for (let i in emptyobj) {
+                    emptyobj[i].id = i
+                    data.push(emptyobj[i])
+                } 
+                table (data)
+                 }
+                };
+                xhttp.open("GET", "https://traineesapi.firebaseio.com/process.json", true);
+                xhttp.send();
+        }
+        
+        function multipledelete(id){
+            ids.push(id)
+        //     ids.forEach(val =>{
+        //     var btn = document.querySelector("#delete12");
+        //     btn.addEventListener('click', (event)=>{
+        //         var xhttp = new XMLHttpRequest();
+        //         xhttp.onreadystatechange = function() {
+        //             if (this.readyState == 4 && this.status == 200) {
+                        
+        //             }
+        //         }
+        //         xhttp.open("DELETE",`https://traineesapi.firebaseio.com/process/${val}.json` , true);
+        //         xhttp.send();
+        //     })
+            
+        // })
+        // getdatafromapi()
+      
+    }
+    function delMultipleData () {
+        ids.forEach(val =>{
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        ids.length ? '' : getdatafromapi()
+                    }
+                }
+                xhttp.open("DELETE",`https://traineesapi.firebaseio.com/process/${val}.json` , true);
+                xhttp.send();
+        })
+        
+    }
+        function table(data){
+            console.log(data)
+            var Table = '<tbody>'
+            const idvalue = ["name", "class1", "area","city","state"]
+            for(i = 0; i <data.length; i++){
+                Table+= '<tr>';
+                Table+= '<tr>';
+               
+                idvalue.forEach(field => {
+                    Table +=  '<td>' + data[i][field] + '</td>';
+                })
+                Table += "<td class='nohover1'>" + `<input type="button" id="edit" onclick="onedit('${data[i].id}')" onmouseenter='mouseseen1(this)' onmouseleave='mouseleave1(this)' value='Edit'>`
+                    +" " + `<input type='button' id='delete' onclick="ondelete('${data[i].id}')" onmouseenter='mouseseen(this)' onmouseleave='mouseleave(this)' value='Delete'>`
+                    Table += '<td>'+`<input id="checkbox" onclick= "multipledelete('${data[i].id}')" type="checkbox">`
+                    Table+= '</tr>';
+            }
+            Table+='</tbody>';  
+            document.getElementById('tbdata').innerHTML = Table;
+        }
+        function mouseseen(x) {
+            x.style.color = "red";
+        }
+        function mouseleave(x) {
+            x.style.color = "";
+        }
+        function mouseseen1(x) {
+            x.style.color = "green";
+        }
+        function mouseleave1(x) {
+            x.style.color = "";
+        }
+        function saerch1(){
+            var value = []
+            input = document.getElementById("searchInput").value;
+            data.forEach(val =>{
+                var table = false
+                let data  = Object.values(val)
+                data.filter(valu=>{
+                    if (valu.toLowerCase().indexOf(input.toLowerCase())!== -1){
+                        table = true;
+                    }
+                })
+                if (table) value.push(val)
+            })
+            value.length ? table(value) : table(data)
+        }
+        function filter1() {
+            var newtable = []
+            var select = document.getElementById("select1").value
+            var select1 = document.getElementById("select").value
+            data.filter(val=>{
+                if(val.city.toUpperCase() === select.toUpperCase() && val.state.toUpperCase() === select1.toUpperCase()) {
+                    newtable.push(val)
+                }   
+                if (select == '-1') {
+                    table(data)
+                }
+                else {
+                    table(newtable) 
+                }
+            })
+        }
+        function onedit(id) {
+            getid=id;
+            let buttonid = [{id:"reset",value:"block"},    
+                            {id:"update",value:"block"},
+                            {id:"submit",value:"none"},  
+                            {id:"sampleTable",value:"none"},
+                            {id:"search",value:"none"},
+                            {id:"select",value:"none"},
+                            {id:"myform",value:"block"},
+                            {id:"update",value:"block"}]
+            buttonid.forEach(val => {
+                document.getElementById(val.id).style.display = val.value
+            })
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let object = JSON.parse(this.responseText)
+                    let ids = [{id:"name",objvalue:"name"},
+                                {id:"class1",objvalue:"class1"},
+                                {id:"area",objvalue:"area"},
+                                {id:"city",objvalue:"city"},
+                                {id:"state",objvalue:"state"}]
+                    ids.forEach(val=>{
+                        document.getElementById(val.id).value = object[val.objvalue]
+                    })
+                }
+            }
+            xhttp.open("GET",`https://traineesapi.firebaseio.com/process/${id}.json`, true);
+            xhttp.send();
+        }
+        function ondelete(id) {
+            if(confirm('Are you sure delete this record?')){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        getdatafromapi()
+                    }
+                }
+                xhttp.open("DELETE",`https://traineesapi.firebaseio.com/process/${id}.json` , true);
+                xhttp.send();
+            }
+        }
+        function updatedata(){
+
+            let buttonid = [{id:"reset",value:"none"},    
+                                {id:"submit",value:"none"},
+                                {id:"sampleTable",value:"block"},  
+                                {id:"search",value:"block"},
+                                {id:"select",value:"block"},
+                                {id:"myform",value:"none"},
+                                {id:"update",value:"none"}]
+                buttonid.forEach(val => { 
+                    document.getElementById(val.id).style.display = val.value
+                })
+            let data = getdata()
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    getdatafromapi()
+                }
+            }
+            xhttp.open("PUT",`https://traineesapi.firebaseio.com/process/${getid}.json`, true);
+            xhttp.send(JSON.stringify(data));
+            reset()
+        }
+        function reset() {
+            document.getElementById('myform').reset(); 
+        }
+    </script>
+</html>
